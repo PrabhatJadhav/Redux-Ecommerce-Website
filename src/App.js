@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AnimatedRoutes from "./Components/AnimatedRoutes";
+import Navbar from "./Components/Navbar";
+import "./main.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.2, duration: 1 }}
+      className="App"
+    >
+      <Router>
+        <Navbar />
+        <AnimatedRoutes />
+      </Router>
+    </motion.div>
   );
 }
 
