@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux/es/exports";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { addToCart } from "../Features/cartSlice";
 
 function Products() {
   const productData = useRef([]);
   const [receivedData, setReceivedData] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getData = () => {
@@ -17,6 +20,10 @@ function Products() {
     };
     getData();
   }, []);
+
+  const handleAdd = (product) => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <motion.div
@@ -34,7 +41,8 @@ function Products() {
             <div className="product" key={data.id}>
               <img className="prod-img" alt={data.category} src={data.image} />
               <h5>{data.title}</h5>
-              <h2> Price:- {parseInt(data.price, 10)}Rs </h2>
+              <h2> Price:- {parseInt(data.price, 10)}$ </h2>
+              <button onClick={() => handleAdd(data)}>Add To Cart</button>
             </div>
           ) : (
             ""
