@@ -8,6 +8,7 @@
 }
 .product {
   width: 30%;
+  height: 30rem;
   margin-bottom: 4rem;
   border: 1px solid white;
   box-shadow: 0 0 1rem black;
@@ -22,6 +23,19 @@
   object-fit: contain;
   height: 300px;
   width: 200px;
+}
+button {
+  border-radius: 2rem;
+  width: 7rem;
+  height: 2.5rem;
+  background-color: pink;
+  border: 1.5px solid black;
+  font-weight: 500;
+}
+button:hover {
+  transition: 300ms;
+  background-color: palevioletred;
+  color: white;
 }
 .prod-banner {
   height: 30rem;
@@ -42,10 +56,11 @@
   justify-content: space-around;
   min-height: 12vh;
   max-height: auto;
-  background-color: pink;
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 0 6rem;
   border-bottom: 1.2px solid;
   z-index: 1;
+  border-bottom: 2px solid palevioletred;
 }
 .navbar-rotate {
   transform: rotate(90deg);
@@ -79,13 +94,34 @@
   background-image: url(./Media/home-bg.jpg);
   background-size: cover;
 }
-button {
+.button {
+  display: flex;
   background-color: #409426;
-  width: 8rem;
+  justify-content: center;
+  width: 10rem;
   height: 3rem;
   border-radius: 2rem;
   font-size: x-large;
   margin-top: 1rem;
+  padding: 0 1rem;
+  padding-top: 0.3rem;
+  color: black;
+}
+.button:hover {
+  transition: 400ms;
+  background-color: #60c442;
+}
+.enter img {
+  margin-left: 0.2rem;
+  height: 2rem;
+  width: 2rem;
+  padding-bottom: 0.2rem;
+}
+.td-none {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-right: 1rem;
 }
 .info {
   position: fixed;
@@ -99,5 +135,5 @@ button {
 }
 .link {
   text-decoration: none;
-  color: black;
+  color: palevioletred;
 }

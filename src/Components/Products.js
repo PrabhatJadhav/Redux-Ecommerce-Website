@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { addToCart } from "../Features/cartSlice";
+import { ToastContainer } from "react-toastify";
+
+import axios from "axios";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function Products() {
   const productData = useRef([]);
@@ -33,6 +37,7 @@ function Products() {
       transition={{ delay: 0.2, duration: 1 }}
       className="prod-container"
     >
+      <ToastContainer />
       <div className="prod-banner"></div>
       <h1 className="title">Products</h1>
       <div className="items-container">
