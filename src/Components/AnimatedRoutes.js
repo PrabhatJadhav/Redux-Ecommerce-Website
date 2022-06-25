@@ -2,11 +2,11 @@ import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./Home";
-import Products from "./Products";
 import Contact from "./Contact";
 import About from "./About";
 import ErrorPage from "./ErrorPage";
 import Cart from "./Cart";
+import ProductLocal from "./ProductsLocal";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -15,8 +15,8 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" exact element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/product" element={<Products />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/product" element={<ProductLocal />} />
+        <Route path="/products" element={<ProductLocal />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />

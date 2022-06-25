@@ -1,10 +1,17 @@
 import React from "react";
 import cart from "../Media/carts.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 
 function Navbar() {
+  const history = useNavigate();
+
+  const handleCart = () => {
+    history("/cart");
+  };
+
   return (
     <div className="top">
       <nav className="navbar navbar-fixed-top container-fluid navbar-main col-10 mx-auto navbar-expand-lg">
@@ -29,6 +36,11 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
+              <Link className="link" to={"/product"}>
+                Shop Now!
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="link" to={"/contact"}>
                 Contact
               </Link>
@@ -38,9 +50,10 @@ function Navbar() {
                 About
               </Link>
             </li>
-            <div className="nav-item">
+            <Link onClick={handleCart} to={"/cart"} className="nav-item">
               <img className="cart" src={cart} alt="shopping cart" />
-            </div>
+              {/* {state.cartItems.payload} */}
+            </Link>
           </ul>
         </div>
       </nav>
