@@ -18,14 +18,12 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (itemIndex >= 0) {
-        console.log("in if");
         state.cartItems[itemIndex].cartQuantity += 1;
-        toast.success("Added To Cart", {
+        toast.success("Increased Quantity", {
           position: "top-right",
         });
         localStorage.setItem("Cart Items", JSON.stringify(state.cartItems));
       } else {
-        console.log("in else");
         const tempProduct = {
           ...action.payload,
           cartQuantity: 1,
@@ -77,10 +75,30 @@ const cartSlice = createSlice({
       });
       localStorage.setItem("Cart Items", JSON.stringify(state.cartItems));
     },
+
+    getTotals(state, action) {
+      let { total, quantity } = state.cartItems.reduce(
+        (cartTotal, cartItem) => {
+          const { price, cartQuantity } = cartItem;
+          const itemTotal = price * cartQuantity;
+
+          cartTotal.total += itemTotal;
+          cartTotal.quantity += cartQuantity;
+
+          return cartTotal;
+        },
+        {
+          total: 0,
+          quantity: 0,
+        }
+      );
+      state.cartTotalAmount = total;
+      state.cartTotalQuantity = quantity;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, decreaseCart, clearCart } =
+export const { addToCart, removeFromCart, decreaseCart, clearCart, getTotals } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

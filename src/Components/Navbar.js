@@ -1,16 +1,12 @@
 import React from "react";
-import cart from "../Media/carts.png";
+import cart from "../Media/shopping-bag.png";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const history = useNavigate();
-
-  const handleCart = () => {
-    history("/cart");
-  };
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
 
   return (
     <div className="top">
@@ -50,9 +46,9 @@ function Navbar() {
                 About
               </Link>
             </li>
-            <Link onClick={handleCart} to={"/cart"} className="nav-item">
+            <Link to={"/cart"} className="nav-item link pos-cart">
               <img className="cart" src={cart} alt="shopping cart" />
-              {/* {state.cartItems.payload} */}
+              <div className="cart-amount">{cartTotalQuantity}</div>
             </Link>
           </ul>
         </div>

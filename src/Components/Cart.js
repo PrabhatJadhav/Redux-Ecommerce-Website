@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
@@ -7,6 +7,7 @@ import {
   addToCart,
   decreaseCart,
   clearCart,
+  getTotals,
 } from "../Features/cartSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +15,10 @@ import "react-toastify/dist/ReactToastify.css";
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart]);
 
   const handleRemove = (cart) => {
     dispatch(removeFromCart(cart));
@@ -78,11 +83,13 @@ function Cart() {
                 </div>
                 <div>{cart.price}$</div>
                 <div className="cart-quantity-change">
-                  <button onClick={(cart) => handleAdd(cart)}>+</button>
+                  <button onClick={() => handleAdd(cart)}>+</button>
                   <div>{cart.cartQuantity}</div>
-                  <button onClick={(cart) => handleSubtract(cart)}>-</button>
+                  <button onClick={() => handleSubtract(cart)}>-</button>
                 </div>
-                <div>{cart.price * cart.cartQuantity}$</div>
+                <div>
+                  {parseFloat(cart.price * cart.cartQuantity).toFixed(2)}$
+                </div>
               </div>
             ))}
           </div>
@@ -91,9 +98,9 @@ function Cart() {
             <div className="checkout">
               <div>
                 <span>Subtotal - </span>
-                <span>{cart.cartTotalAmount} $</span>
+                <span>{parseFloat(cart.cartTotalAmount).toFixed(2)} $</span>
               </div>
-              <p>Free Shipping</p>
+              <p>*Free Shipping</p>
               <button>CheckOut</button>
               <Link className="link" to={"/product"}>
                 <svg
@@ -118,3 +125,7 @@ function Cart() {
 }
 
 export default Cart;
+
+// To get a number upto 2 decimal places
+// num = Number
+// parseFloat(num).toFixed(2)
