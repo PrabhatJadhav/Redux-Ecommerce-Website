@@ -5,12 +5,15 @@ import { addToCart } from "../Features/cartSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGetAllProductsQuery } from "../Features/productsApi";
+import { getTotals } from "../Features/cartSlice";
+import Footer from "./Footer";
 
 function ProductLocal() {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
   // console.log("Error", error);
   // console.log("Data Recieved", data);
+
   if (error !== undefined) {
     window.alert(
       "Sorry for the inconvenience but we are experiencing technical issues. Please come back later."
@@ -19,6 +22,7 @@ function ProductLocal() {
 
   const handleAdd = (product) => {
     dispatch(addToCart(product));
+    dispatch(getTotals());
   };
 
   return (
@@ -54,6 +58,7 @@ function ProductLocal() {
           </div>
         )}
       </div>
+      <Footer />
     </motion.div>
   );
 }

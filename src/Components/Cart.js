@@ -11,6 +11,8 @@ import {
 } from "../Features/cartSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
+import Footer from "./Footer";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -37,7 +39,13 @@ function Cart() {
   };
 
   return (
-    <div className="cart-container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.2, duration: 1 }}
+      className="cart-container"
+    >
       <ToastContainer />
       <div className="prod-banner"></div>
       {cart.cartItems.length === 0 ? (
@@ -101,7 +109,9 @@ function Cart() {
                 <span>{parseFloat(cart.cartTotalAmount).toFixed(2)} $</span>
               </div>
               <p>*Free Shipping</p>
-              <button>CheckOut</button>
+              <Link className="link" to={"/checkout"}>
+                <button>CheckOut</button>
+              </Link>
               <Link className="link" to={"/product"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +130,8 @@ function Cart() {
           </div>
         </div>
       )}
-    </div>
+      <Footer />
+    </motion.div>
   );
 }
 
