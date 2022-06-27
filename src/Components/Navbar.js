@@ -6,11 +6,11 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const cartStore = useSelector((state) => state.cart);
 
   return (
     <div className="top">
-      <nav className="navbar navbar-fixed-top container-fluid navbar-main col-10 mx-auto navbar-expand-lg">
+      <nav className="navbar navbar-fixed-top container-fluid navbar-main px-5 mx-auto navbar-expand-lg">
         <div>
           <Link className="link" to={"/"}>
             <h2>OnlineShop</h2>
@@ -46,9 +46,13 @@ function Navbar() {
                 About
               </Link>
             </li>
-            <Link to={"/cart"} className="nav-item link pos-cart">
+            <Link
+              title={`${cartStore.cartTotalQuantity} items in your cart`}
+              to={"/cart"}
+              className="nav-item link pos-cart"
+            >
               <img className="cart" src={cart} alt="shopping cart" />
-              <div className="cart-amount">{cartTotalQuantity}</div>
+              <div className="cart-amount">{cartStore.cartTotalQuantity}</div>
             </Link>
           </ul>
         </div>

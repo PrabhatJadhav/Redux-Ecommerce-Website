@@ -7,6 +7,7 @@ import About from "./About";
 import ErrorPage from "./ErrorPage";
 import Cart from "./Cart";
 import ProductLocal from "./ProductsLocal";
+import Checkout from "./Checkout";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </AnimatePresence>
