@@ -8,7 +8,8 @@
 }
 .product {
   width: 30%;
-  height: 30rem;
+  min-height: 30rem;
+  max-height: auto;
   margin-bottom: 4rem;
   border: 1px solid white;
   box-shadow: 0 0 1rem black;
