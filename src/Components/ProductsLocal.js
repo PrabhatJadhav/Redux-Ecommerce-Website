@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux/es/exports";
 import { addToCart } from "../Features/cartSlice";
@@ -13,6 +13,10 @@ function ProductLocal() {
   const dispatch = useDispatch();
   // console.log("Error", error);
   // console.log("Data Recieved", data);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (error !== undefined) {
     window.alert(
