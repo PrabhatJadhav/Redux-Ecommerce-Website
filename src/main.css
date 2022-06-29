@@ -300,3 +300,18 @@ a {
 .payed .link {
   text-decoration: underline;
 }
+.height {
+  height: 100vh;
+  background-color: pink;
+}
+.height > a {
+  color: red;
+}
+.height > a:hover {
+  color: blue;
+}
+.error-pg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
