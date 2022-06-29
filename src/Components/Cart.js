@@ -20,8 +20,11 @@ function Cart() {
 
   useEffect(() => {
     dispatch(getTotals());
-    window.scrollTo(0, 0);
   }, [cart]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleRemove = (cart) => {
     dispatch(removeFromCart(cart));
