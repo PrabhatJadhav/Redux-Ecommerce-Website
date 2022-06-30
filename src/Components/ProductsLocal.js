@@ -18,10 +18,15 @@ function ProductLocal() {
     window.scrollTo(0, 0);
   }, []);
 
-  if (error !== undefined) {
-    window.alert(
-      "Sorry for the inconvenience but we are experiencing technical issues. Please come back later."
-    );
+  if (error !== undefined || error?.originalStatus === 404) {
+    setTimeout(() => {
+      const result = window.confirm(
+        "We are unable to fetch the products data, Press OK to try again"
+      );
+      if (result === true) {
+        window.location.reload();
+      }
+    }, 2000);
   }
 
   const handleAdd = (product) => {
@@ -41,7 +46,10 @@ function ProductLocal() {
       <div className="prod-banner"></div>
       <div className="data-container">
         {isLoading ? (
-          <h1>Loading...</h1>
+          <div className="product-loading">
+            <div className="ball"></div>
+            <h1>Loading...</h1>
+          </div>
         ) : (
           <div>
             <h1 className="title">Products</h1>

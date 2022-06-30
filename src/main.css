@@ -274,7 +274,7 @@ h5 {
 .bg-footer {
   background-color: pink;
   border-top: 1.5px solid black;
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 .bg-footer,
 a {
@@ -314,4 +314,34 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.product-loading {
+  display: flex;
+  flex-direction: column;
+  background-color: palevioletred;
+  height: 50vh;
+  justify-content: space-around;
+}
+.ball {
+  display: flex;
+  align-self: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: pink;
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+  }
+  to {
+    transform: translate3d(0, 100px, 0);
+    opacity: 1;
+  }
 }
