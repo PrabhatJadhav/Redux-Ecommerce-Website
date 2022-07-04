@@ -334,6 +334,12 @@ a {
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
   animation-iteration-count: infinite;
 }
+.form-container {
+  background-color: rgb(199, 75, 117);
+}
+textarea {
+  resize: none;
+}
 
 @keyframes bounce {
   from {
